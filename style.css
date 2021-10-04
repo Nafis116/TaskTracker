@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
+}
+
+#container {
+  margin: 20px 20px;
+  width: 336px;
+  height: auto;
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.imgTitle {
+  margin-top: -0.5px;
+  width: 334px;
+}
+
+.headTitle {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 30px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #000000;
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+.sort {
+  margin-left: 265px;
+  width: 40px;
+  cursor: pointer;
+}
+
+.sort2 {
+  display: none;
+}
+
+.taskDiv {
+  margin: 11px 27px 0 28px;
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+}
+
+.inputTask {
+  margin-left: 28px;
+  margin-top: 11px;
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+  width: 262px;
+  height: 40px;
+}
+
+.btnAdd {
+  width: 150px;
+  height: 42px;
+  background: #833AE0;
+  border-radius: 71px;
+  border: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  margin-top: 18px;
+  margin-left: 92px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding-left: 59px;
+}
+
+.p {
+  position:absolute;
+  left: 92px;
+  background: #9953F1;
+  border-radius: 71px;
+  width: 42px;
+  height: 42px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-right: 13px;
+  cursor: pointer;
+}
+
+.inputTask {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  outline: none;
+  padding-left: 10px;
+  display: none;
+}
+
+.allTask {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.btnDelete {
+  border: 1px solid #C4C4C4;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  text-align: center; 
+  width: 20px;
+  height: 20px;
+  padding-left: 5px;
+  padding-right: 5px;  
+  color: #C4C4C4;
+  background-color: #FFFFFF;
+  margin: 5px 2px;
+}
+
+.taskList {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+  padding-inline-start: 10px;
+  padding-inline-end: 10px;
+}
+
+.taskList li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.btnDelete:hover {
+  color: #FFFFFF;
+  background-color: #833AE0;
+  border: 1px solid #833AE0;
+  cursor: pointer;
+}
+
+.spanDelete {
+  text-decoration:line-through;
+  cursor: pointer;
+}
+
+.divAdd {
+  position: relative;
+}
+
+.myDiv {
+  max-width: 300px;
+  scroll-behavior:smooth;
+}
+
