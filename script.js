@@ -1,9 +1,11 @@
-let btnAdd = document.querySelector('.btnAdd');
-    myDiv = document.querySelector('#myDiv');
-    btnInput = document.querySelector('#btnInput');
-    inputTask = document.querySelector('.inputTask');
-    btnSort = document.querySelector('.sort');
-    ul = document.querySelector('.taskList');
+'use strict'
+
+let btnAdd = document.querySelector('.btn__add');
+let myDiv = document.querySelector('#myDiv');
+let btnInput = document.querySelector('#btnInput');
+let inputTask = document.querySelector('.input__task');
+let btnSort = document.querySelector('.sort');
+let ul = document.querySelector('.list__task');
 let arrTasks = [];
 
 
@@ -26,7 +28,7 @@ myDiv.addEventListener('click', (e) => {
   if (localStorage.getItem('arrTasks')) {
     arrTasks = JSON.parse(localStorage.getItem('arrTasks'))
   }
-  if (e.target.classList.contains('btnDelete')) {
+  if (e.target.classList.contains('btn__delete')) {
     let spanDelete = e.target.previousElementSibling.innerHTML;
     deleteTask(spanDelete);
   } 
@@ -76,8 +78,8 @@ function deleteTask(spanDelete) {
 function createTasks() {
   for (let i = 0; i < arrTasks.length; i++) {
   let li = document.createElement('li');
-      span = document.createElement('span');
-      ul = document.querySelector('ul');
+  let span = document.createElement('span');
+  let ul = document.querySelector('ul');
       myDiv.append(ul);
       myDiv.classList.add('taskDiv');
       ul.append(li);
@@ -85,7 +87,7 @@ function createTasks() {
       span.innerHTML = arrTasks[i];
 
   var btnDelete = document.createElement('button');
-      btnDelete.classList = 'btnDelete';
+      btnDelete.classList = 'btn__delete';
       btnDelete.innerText = 'X';
       li.append(btnDelete);
   }
@@ -102,6 +104,7 @@ function showTasks() {
 
 
 let flagSort = true;
+let newArr = [];
 function sort() {
   if (localStorage.getItem('arrTasks')) {
     newArr = JSON.parse(localStorage.getItem('arrTasks'))
