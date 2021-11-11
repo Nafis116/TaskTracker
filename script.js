@@ -39,7 +39,6 @@ btnInput.addEventListener('click', () => {
 })
 
 btnSort.addEventListener('click', sort);
-
 btnSort.addEventListener('mouseleave', changeImg);
 btnSort.addEventListener('mouseenter', changeImg2);
 
@@ -78,8 +77,9 @@ function deleteTask(spanDelete) {
 function createTasks() {
   for (let i = 0; i < arrTasks.length; i++) {
   let li = document.createElement('li');
+      li.classList.add('item__task')
+      li.draggable = true;
   let span = document.createElement('span');
-  let ul = document.querySelector('ul');
       myDiv.append(ul);
       myDiv.classList.add('taskDiv');
       ul.append(li);
@@ -124,7 +124,45 @@ function sort() {
   ul.innerHTML = '';
   showTasks();
 }
+function dnd() {
+  const taskList = document.querySelector('.list__task');
+  const taskElements = taskList.querySelectorAll('.item__task');
+  
+  taskList.addEventListener(`dragstart`, (evt) => {
+    evt.target.classList.add(`selected`);
+  });
+  
+  taskList.addEventListener(`dragend`, (evt) => {
+    evt.target.classList.remove(`selected`);
+  });
 
+  taskList.addEventListener(`dragover`, (evt) => {
+    evt.preventDefault();
+  
+    const activeElement = taskList.querySelector(`.selected`);
+    const currentElement = evt.target;
+    const isMoveable = activeElement !== currentElement &&
+      currentElement.classList.contains(`item__task`);
+  
+    if (!isMoveable) {
+      return;
+    }
+  
+    const nextElement = getNextElement(evt.clientY, currentElement);
+
+    if (
+      nextElement && 
+      activeElement === nextElement.previousElementSibling ||
+      activeElement === nextElement
+    ) {
+      return;
+    }
+  
+    taskList.insertBefore(activeElement, nextElement);
+  });
+}
+
+dnd();
 showTasks();
 
 
