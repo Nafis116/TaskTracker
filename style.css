@@ -18,12 +18,12 @@ body {
   border-radius: 10px;
 }
 
-.imgTitle {
+.img__title {
   margin-top: -0.5px;
   width: 334px;
 }
 
-.headTitle {
+.head__title {
   font-family: Roboto;
   font-style: normal;
   font-weight: 900;
@@ -52,16 +52,7 @@ body {
   border-radius: 10px;
 }
 
-.inputTask {
-  margin-left: 28px;
-  margin-top: 11px;
-  border: 1px solid #C4C4C4;
-  border-radius: 10px;
-  width: 262px;
-  height: 40px;
-}
-
-.btnAdd {
+.btn__add {
   width: 150px;
   height: 42px;
   background: #833AE0;
@@ -97,7 +88,7 @@ body {
   cursor: pointer;
 }
 
-.inputTask {
+.input__task {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -109,17 +100,16 @@ body {
   outline: none;
   padding-left: 10px;
   display: none;
+  margin-left: 28px;
+  margin-top: 11px;
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+  width: 262px;
+  height: 40px;
 }
 
-.allTask {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-}
 
-.btnDelete {
+.btn__delete {
   border: 1px solid #C4C4C4;
   border-radius: 100px;
   display: flex;
@@ -134,7 +124,7 @@ body {
   margin: 5px 2px;
 }
 
-.taskList {
+.list__task {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -145,7 +135,7 @@ body {
   padding-inline-end: 10px;
 }
 
-.taskList li {
+.list__task li {
   list-style-type: none;
   display: flex;
   align-items: center;
@@ -153,7 +143,7 @@ body {
   justify-content: space-between;
 }
 
-.btnDelete:hover {
+.btn__delete:hover {
   color: #FFFFFF;
   background-color: #833AE0;
   border: 1px solid #833AE0;
@@ -165,7 +155,7 @@ body {
   cursor: pointer;
 }
 
-.divAdd {
+.div__add {
   position: relative;
 }
 

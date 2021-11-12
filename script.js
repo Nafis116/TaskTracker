@@ -1,9 +1,11 @@
-let btnAdd = document.querySelector('.btnAdd');
-    myDiv = document.querySelector('#myDiv');
-    btnInput = document.querySelector('#btnInput');
-    inputTask = document.querySelector('.inputTask');
-    btnSort = document.querySelector('.sort');
-    ul = document.querySelector('.taskList');
+'use strict'
+
+let btnAdd = document.querySelector('.btn__add');
+let myDiv = document.querySelector('#myDiv');
+let btnInput = document.querySelector('#btnInput');
+let inputTask = document.querySelector('.input__task');
+let btnSort = document.querySelector('.sort');
+let ul = document.querySelector('.list__task');
 let arrTasks = [];
 
 btnAdd.addEventListener('click', function() {
@@ -25,7 +27,7 @@ myDiv.addEventListener('click', (e) => {
   if (localStorage.getItem('arrTasks')) {
     arrTasks = JSON.parse(localStorage.getItem('arrTasks'))
   }
-  if (e.target.classList.contains('btnDelete')) {
+  if (e.target.classList.contains('btn__delete')) {
     let spanDelete = e.target.previousElementSibling.innerHTML;
     deleteTask(spanDelete);
   } 
@@ -36,7 +38,6 @@ btnInput.addEventListener('click', () => {
 })
 
 btnSort.addEventListener('click', sort);
-
 btnSort.addEventListener('mouseleave', changeImg);
 btnSort.addEventListener('mouseenter', changeImg2);
 
@@ -75,8 +76,9 @@ function deleteTask(spanDelete) {
 function createTasks() {
   for (let i = 0; i < arrTasks.length; i++) {
   let li = document.createElement('li');
-      span = document.createElement('span');
-      ul = document.querySelector('ul');
+      li.classList.add('item__task')
+      li.draggable = true;
+  let span = document.createElement('span');
       myDiv.append(ul);
       myDiv.classList.add('taskDiv');
       ul.append(li);
@@ -84,7 +86,7 @@ function createTasks() {
       span.innerHTML = arrTasks[i];
 
   var btnDelete = document.createElement('button');
-      btnDelete.classList = 'btnDelete';
+      btnDelete.classList = 'btn__delete';
       btnDelete.innerText = 'X';
       li.append(btnDelete);
   }
@@ -101,6 +103,7 @@ function showTasks() {
 
 
 let flagSort = true;
+let newArr = [];
 function sort() {
   if (localStorage.getItem('arrTasks')) {
     newArr = JSON.parse(localStorage.getItem('arrTasks'))
@@ -120,7 +123,55 @@ function sort() {
   ul.innerHTML = '';
   showTasks();
 }
+function dnd() {
+  const taskList = document.querySelector('.list__task');
+  const taskElements = taskList.querySelectorAll('.item__task');
+  
+  taskList.addEventListener(`dragstart`, (evt) => {
+    evt.target.classList.add(`selected`);
+  });
+  
+  taskList.addEventListener(`dragend`, (evt) => {
+    evt.target.classList.remove(`selected`);
+  });
 
+  taskList.addEventListener(`dragover`, (evt) => {
+    evt.preventDefault();
+  
+    const activeElement = taskList.querySelector(`.selected`);
+    const currentElement = evt.target;
+    const isMoveable = activeElement !== currentElement &&
+      currentElement.classList.contains(`item__task`);
+  
+    if (!isMoveable) {
+      return;
+    }
+  
+    const nextElement = getNextElement(evt.clientY, currentElement);
+
+    if (
+      nextElement && 
+      activeElement === nextElement.previousElementSibling ||
+      activeElement === nextElement
+    ) {
+      return;
+    }
+  
+    taskList.insertBefore(activeElement, nextElement);
+  });
+}
+
+let getNextElement = (cursorPosition, currentElement) => {
+  let currentElementCoord = currentElement.getBoundingClientRect();
+  const currentElementCenter = currentElementCoord.y + currentElementCoord.height / 2;
+  const nextElement = (cursorPosition < currentElementCenter) ?
+      currentElement :
+      currentElement.nextElementSibling;
+
+  return nextElement;
+}
+
+dnd();
 showTasks();
 
 
