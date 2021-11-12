@@ -6,7 +6,6 @@ let btnAdd = document.querySelector('.btnAdd');
     ul = document.querySelector('.taskList');
 let arrTasks = [];
 
-
 btnAdd.addEventListener('click', function() {
   var inputValue = document.querySelector('input');
   var task = inputValue.value;
